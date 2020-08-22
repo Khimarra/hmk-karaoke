@@ -12,7 +12,8 @@ const api = axios.create({
 
 export const getRooms = async () => {
   const res = await axios.get(`${apiUrl}/rooms`)
-  return res
+  console.log('string')
+  return res.data
 }
 
 export const getRoomById = async (room_id) => {

@@ -2,14 +2,35 @@ import React from 'react'
 import './App.css'
 import { Switch, Route } from 'react-router-dom'
 
-import {
-  // all of the api functions
-} from './services/apiHelper'
+import Home from './components/screens/Home'
+import Room from './components/screens/Room'
+import NewRoom from './components/screens/NewRoom'
 
-export const App = () => {
+const App = (props) => {
+  
   return (
     <div className="App">
-      <h1>HMK Karaoke</h1>
+      <Switch>
+        <Route
+          exact
+          path='/'
+          render={(props) => <Home {...props}  />}
+        />
+
+        <Route
+          exact
+          path='/newroom'
+          render={(props) => <NewRoom />}
+        />
+
+        <Route
+          exact
+          path='/room/:id'
+          render={(props) => <Room {...props} />}
+        />
+
+      </Switch>
+      
     </div>
   )
 }
