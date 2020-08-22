@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1
   def show
-    render json: @room
+    render json: @room, include: :songlists
   end
 
   # POST /rooms

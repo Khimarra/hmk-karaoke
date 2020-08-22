@@ -10,7 +10,7 @@
 
 require 'faker'
 
-Room.create!({
+room = Room.create!({
               title: 'HMK Room',
               code: '4D2T',
               url: 'somezoomlink'
@@ -20,6 +20,7 @@ Room.create!({
   song = Songlist.create!({
                     name: Faker::Name.first_name,
                     song: Faker::Lorem.sentence(word_count: 4),
-                    url: Faker::Internet.url
+                    url: Faker::Internet.url,
+                    room: room
                   })
 end
