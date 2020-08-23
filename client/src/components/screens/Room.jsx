@@ -23,7 +23,7 @@ const Room = (props) => {
 
   return (
     <div className="room">
-      <RoomInfo room={room} />
+      <RoomInfo room={songs} />
 
       <div>
         {songInfo &&

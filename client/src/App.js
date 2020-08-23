@@ -7,7 +7,7 @@ import NewRoom from "./components/screens/NewRoom"
 
 const App = (props) => {
   return (
-    <div className="">
+    <div className='bg-gray-700 h-screen'>
       <Switch>
         <Route
           exact
