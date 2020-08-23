@@ -33,7 +33,7 @@ const Home = (props) => {
 
   return (
     <div className="home">
-      <h1>HMK Karaoke</h1>
+      <h1 className='italic'>HMK Karaoke</h1>
       <h2>Join a room:</h2>
 
       <form onSubmit={handleSubmit}>

@@ -1,7 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import { Switch, Route } from "react-router-dom"
-
-import "./css/style.css"
 
 import Home from "./components/screens/Home"
 import Room from "./components/screens/Room"
@@ -9,7 +7,7 @@ import NewRoom from "./components/screens/NewRoom"
 
 const App = (props) => {
   return (
-    <div className="App">
+    <div className="">
       <Switch>
         <Route
           exact

@@ -20,10 +20,8 @@ export const getRooms = async () => {
 }
 
 export const getRoomsWithSongs = async (room_id) => {
-  console.log("first string")
   try {
     const res = await axios.get(`${apiUrl}/rooms/${room_id}`)
-    console.log("second string")
     return res.data
   } catch (error) {
     console.log(error)
