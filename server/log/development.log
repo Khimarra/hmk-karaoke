@@ -1,0 +1,830 @@
+  [1m[35m (196.9ms)[0m  [1m[35mCREATE DATABASE "hmk_karaoke_development" ENCODING = 'unicode'[0m
+  [1m[35m (95.4ms)[0m  [1m[35mCREATE DATABASE "hmk_karaoke_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "hmk_karaoke_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "hmk_karaoke_test" ENCODING = 'unicode'[0m
+Started GET "/" for ::1 at 2020-08-22 00:40:29 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/khimarra/gems/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/khimarra/gems/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.6ms | Allocations: 468)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 2613)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-08-22 00:40:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5382454504469709555)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRooms (20200822044152)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "title" character varying, "code" character varying, "url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200822044152"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSonglists (20200822044236)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "songlists" ("id" bigserial primary key, "name" character varying, "song" character varying, "url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200822044236"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-22 04:42:44.127601"], ["updated_at", "2020-08-22 04:42:44.127601"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5382454504469709555)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5382454504469709555)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5382454504469709555)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.7ms)[0m  [1m[32mINSERT INTO "rooms" ("title", "code", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "HMK Room"], ["code", "4D2T"], ["url", "somezoomlink"], ["created_at", "2020-08-22 05:15:25.351189"], ["updated_at", "2020-08-22 05:15:25.351189"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5382454504469709555)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5382454504469709555)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/user" for ::1 at 2020-08-22 01:15:57 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/songlists" for ::1 at 2020-08-22 01:16:10 -0400
+Processing by SonglistsController#index as HTML
+  [1m[36mSonglist Load (0.4ms)[0m  [1m[34mSELECT "songlists".* FROM "songlists"[0m
+  ↳ app/controllers/songlists_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 1.3ms | Allocations: 2325)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("title", "code", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "HMK Room"], ["code", "4D2T"], ["url", "somezoomlink"], ["created_at", "2020-08-22 05:16:53.189546"], ["updated_at", "2020-08-22 05:16:53.189546"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/songlists" for ::1 at 2020-08-22 01:17:05 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SonglistsController#index as HTML
+  [1m[36mSonglist Load (0.4ms)[0m  [1m[34mSELECT "songlists".* FROM "songlists"[0m
+  ↳ app/controllers/songlists_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 1.5ms | Allocations: 2315)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5016.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hmk_karaoke_development"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("title", "code", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "HMK Room"], ["code", "4D2T"], ["url", "somezoomlink"], ["created_at", "2020-08-22 05:40:16.187950"], ["updated_at", "2020-08-22 05:40:16.187950"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("title", "code", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "HMK Room"], ["code", "4D2T"], ["url", "somezoomlink"], ["created_at", "2020-08-22 05:46:57.739069"], ["updated_at", "2020-08-22 05:46:57.739069"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.5ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bryan"], ["song", "Voluptatem ut doloremque et."], ["url", "http://gottlieb.name/domingo"], ["created_at", "2020-08-22 05:46:57.803659"], ["updated_at", "2020-08-22 05:46:57.803659"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.3ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Shirlee"], ["song", "Velit itaque accusamus aliquid."], ["url", "http://nolan.info/ross"], ["created_at", "2020-08-22 05:46:57.808529"], ["updated_at", "2020-08-22 05:46:57.808529"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.2ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Deon"], ["song", "Cum rem sunt possimus."], ["url", "http://effertz.info/walter"], ["created_at", "2020-08-22 05:46:57.812510"], ["updated_at", "2020-08-22 05:46:57.812510"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.2ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Angla"], ["song", "Molestias sit eum eos."], ["url", "http://hamill.net/sterling_hermiston"], ["created_at", "2020-08-22 05:46:57.816287"], ["updated_at", "2020-08-22 05:46:57.816287"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.2ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chad"], ["song", "Magnam quas nesciunt eum."], ["url", "http://oconner-turner.com/herlinda"], ["created_at", "2020-08-22 05:46:57.820093"], ["updated_at", "2020-08-22 05:46:57.820093"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/songlists" for ::1 at 2020-08-22 01:47:22 -0400
+Processing by SonglistsController#index as HTML
+  [1m[36mSonglist Load (0.5ms)[0m  [1m[34mSELECT "songlists".* FROM "songlists"[0m
+  ↳ app/controllers/songlists_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 8.3ms | ActiveRecord: 3.8ms | Allocations: 6227)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 02:11:51 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 22ms (Views: 15.4ms | ActiveRecord: 4.8ms | Allocations: 6531)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:21:07 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 1.0ms | Allocations: 1439)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:22:38 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms | Allocations: 1367)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:22:43 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.4ms | Allocations: 1367)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:22:52 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.5ms | Allocations: 1367)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:23:03 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 1386)
+
+
+Started GET "/songlists" for ::1 at 2020-08-22 12:24:29 -0400
+Processing by SonglistsController#index as HTML
+  [1m[36mSonglist Load (0.4ms)[0m  [1m[34mSELECT "songlists".* FROM "songlists"[0m
+  ↳ app/controllers/songlists_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 1503)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:24:41 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1367)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:26:16 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.5ms | Allocations: 1367)
+
+
+Started GET "/" for ::1 at 2020-08-22 12:26:22 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/khimarra/gems/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/khimarra/gems/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 17.8ms | Allocations: 309)
+Completed 200 OK in 30ms (Views: 24.0ms | ActiveRecord: 0.0ms | Allocations: 1612)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:26:38 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.5ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:33:20 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 1.6ms | Allocations: 1425)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:33:22 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.5ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:35:34 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.9ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.9ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:43:26 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.5ms | Allocations: 1428)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:43:30 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:43:56 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 1.1ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:45:33 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.4ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:46:18 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms | Allocations: 1367)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 12:51:28 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:56:30 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.5ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 12:56:49 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.7ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:09 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.6ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:25 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 1.0ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:25 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.7ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:25 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.4ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:32 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.7ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:32 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (3.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 3.4ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:32 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (3.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 14.0ms | ActiveRecord: 3.5ms | Allocations: 1368)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:42 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 1.2ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:42 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:44 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.4ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:44 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 1.0ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:01:44 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.5ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:02:00 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 77ms (Views: 75.6ms | ActiveRecord: 1.2ms | Allocations: 1370)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:02:30 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (2.0ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 2.0ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:02:37 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:02:49 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 1.2ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:03:26 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.8ms | Allocations: 1367)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 13:04:15 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.6ms | Allocations: 1367)
+
+
+Started GET "/rooms" for ::1 at 2020-08-22 13:04:40 -0400
+Processing by RoomsController#index as */*
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 1370)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:05:13 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.7ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:11:16 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.5ms | Allocations: 1425)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:11:25 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.6ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:12:00 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 1.1ms | Allocations: 1368)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:15:07 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.6ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:15:12 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.9ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.9ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:15:57 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.6ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:16:32 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (2.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 2.1ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:16:35 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.7ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:16:45 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (3.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 10.8ms | ActiveRecord: 3.5ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:17:03 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:17:30 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:17:45 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:17:59 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:18:07 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.3ms | Allocations: 1370)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:18:17 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:18:43 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (1.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 1.4ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:19:02 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:20:05 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (3.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 8.0ms | ActiveRecord: 3.5ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:20:46 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:22:05 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.4ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:25:12 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.6ms | Allocations: 1367)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 13:25:39 -0400
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 29ms (Views: 18.3ms | ActiveRecord: 8.1ms | Allocations: 6980)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 15:21:36 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (2.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 2.2ms | Allocations: 1439)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5382454504469709555)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoomRefToSonglist (20200822192842)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "songlists" ADD "room_id" bigint NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5382454504469709555)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5382454504469709555)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRoomRefToSonglist (20200822192842)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "songlists" ADD "room_id" bigint[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE  INDEX  "index_songlists_on_room_id" ON "songlists"  ("room_id")[0m
+  [1m[35m (4.5ms)[0m  [1m[35mALTER TABLE "songlists" ADD CONSTRAINT "fk_rails_85f81b3e6f"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+[0m
+  [1m[36mprimary::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200822192842"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5382454504469709555)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (18.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hmk_karaoke_development"[0m
+  [1m[35m (19.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "hmk_karaoke_test"[0m
+  [1m[35m (160.5ms)[0m  [1m[35mCREATE DATABASE "hmk_karaoke_development" ENCODING = 'unicode'[0m
+  [1m[35m (71.7ms)[0m  [1m[35mCREATE DATABASE "hmk_karaoke_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "title" character varying, "code" character varying, "url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "songlists" CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "songlists" ("id" bigserial primary key, "name" character varying, "song" character varying, "url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "room_id" bigint)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_songlists_on_room_id" ON "songlists"  ("room_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "songlists" ADD CONSTRAINT "fk_rails_85f81b3e6f"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200822192842)[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200822044152),
+(20200822044236);
+
+[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-22 19:32:58.468758"], ["updated_at", "2020-08-22 19:32:58.468758"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "6e52d7300eaf0d1fdbb9e0de82a750e722e584c0"], ["created_at", "2020-08-22 19:32:58.475585"], ["updated_at", "2020-08-22 19:32:58.475585"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "title" character varying, "code" character varying, "url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "songlists" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "songlists" ("id" bigserial primary key, "name" character varying, "song" character varying, "url" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "room_id" bigint)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE  INDEX  "index_songlists_on_room_id" ON "songlists"  ("room_id")[0m
+  [1m[35m (4.6ms)[0m  [1m[35mALTER TABLE "songlists" ADD CONSTRAINT "fk_rails_85f81b3e6f"
+FOREIGN KEY ("room_id")
+  REFERENCES "rooms" ("id")
+[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200822192842)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200822044152),
+(20200822044236);
+
+[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-22 19:32:58.571016"], ["updated_at", "2020-08-22 19:32:58.571016"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-08-22 19:32:58.588451"], ["key", "environment"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "6e52d7300eaf0d1fdbb9e0de82a750e722e584c0"], ["created_at", "2020-08-22 19:32:58.596095"], ["updated_at", "2020-08-22 19:32:58.596095"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.4ms)[0m  [1m[32mINSERT INTO "rooms" ("title", "code", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "HMK Room"], ["code", "4D2T"], ["url", "somezoomlink"], ["created_at", "2020-08-22 19:32:58.631275"], ["updated_at", "2020-08-22 19:32:58.631275"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.9ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at", "room_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Hiroko"], ["song", "Blanditiis pariatur aut tenetur."], ["url", "http://schaefer-davis.name/martin"], ["created_at", "2020-08-22 19:32:58.757771"], ["updated_at", "2020-08-22 19:32:58.757771"], ["room_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.3ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at", "room_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Kia"], ["song", "Sit quia in veritatis."], ["url", "http://towne.org/aubrey.hayes"], ["created_at", "2020-08-22 19:32:58.772678"], ["updated_at", "2020-08-22 19:32:58.772678"], ["room_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.9ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at", "room_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Damion"], ["song", "Quaerat quia sequi dolorem."], ["url", "http://walsh.co/maximo"], ["created_at", "2020-08-22 19:32:58.779656"], ["updated_at", "2020-08-22 19:32:58.779656"], ["room_id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.5ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at", "room_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jarrod"], ["song", "Est omnis et rerum."], ["url", "http://reinger-satterfield.io/ami.gutmann"], ["created_at", "2020-08-22 19:32:58.788451"], ["updated_at", "2020-08-22 19:32:58.788451"], ["room_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSonglist Create (0.4ms)[0m  [1m[32mINSERT INTO "songlists" ("name", "song", "url", "created_at", "updated_at", "room_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ermelinda"], ["song", "Et ducimus numquam laudantium."], ["url", "http://harris.io/katheleen"], ["created_at", "2020-08-22 19:32:58.796880"], ["updated_at", "2020-08-22 19:32:58.796880"], ["room_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/rooms" for ::1 at 2020-08-22 15:33:39 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 4.0ms | Allocations: 6592)
+
+
+Started GET "/songlists" for ::1 at 2020-08-22 15:33:48 -0400
+Processing by SonglistsController#index as HTML
+  [1m[36mSonglist Load (1.4ms)[0m  [1m[34mSELECT "songlists".* FROM "songlists"[0m
+  ↳ app/controllers/songlists_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 14.0ms | ActiveRecord: 6.5ms | Allocations: 6939)
+
+
+Started GET "/rooms/1" for ::1 at 2020-08-22 15:34:53 -0400
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:44:in `set_room'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 2435)
+
+
+Started GET "/rooms/1" for ::1 at 2020-08-22 15:38:13 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRoom Load (1.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:44:in `set_room'
+  [1m[36mSonglist Load (1.3ms)[0m  [1m[34mSELECT "songlists".* FROM "songlists" WHERE "songlists"."room_id" = $1[0m  [["room_id", 1]]
+  ↳ app/controllers/rooms_controller.rb:13:in `show'
+Completed 200 OK in 64ms (Views: 29.8ms | ActiveRecord: 15.4ms | Allocations: 17863)
+
+
+Started GET "//rooms" for ::1 at 2020-08-22 16:18:31 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.7ms | Allocations: 1053)
+
+
+Started GET "/rooms/4D2T" for ::1 at 2020-08-23 01:33:03 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"4D2T"}
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:44:in `set_room'
+Completed 404 Not Found in 13ms (ActiveRecord: 5.6ms | Allocations: 2900)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Room with 'id'=4D2T):
+  
+app/controllers/rooms_controller.rb:44:in `set_room'
+Started GET "/room/4D2T" for ::1 at 2020-08-23 07:25:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/room/4D2T"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/favicon.ico" for ::1 at 2020-08-23 07:25:19 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
