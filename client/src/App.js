@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import "./App.css"
 import { Switch, Route } from "react-router-dom"
+
+import "./css/style.css"
 
 import Home from "./components/screens/Home"
 import Room from "./components/screens/Room"
