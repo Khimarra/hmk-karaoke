@@ -11,9 +11,23 @@ const api = axios.create({
 // ========================================================
 
 export const getRooms = async () => {
-  const res = await axios.get(`${apiUrl}/rooms`)
-  console.log('string')
-  return res.data
+  try {
+    const res = await axios.get(`${apiUrl}/rooms`)
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getRoomsWithSongs = async (room_id) => {
+  console.log("first string")
+  try {
+    const res = await axios.get(`${apiUrl}/rooms/${room_id}`)
+    console.log("string")
+    return res.data
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const getRoomById = async (room_id) => {

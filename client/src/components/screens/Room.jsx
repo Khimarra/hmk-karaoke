@@ -1,34 +1,33 @@
-// import React, { useState } from 'react'
-// // import { getRoomById } from '../../services/apiHelper'
-// // import { useHistory } from 'react-router-dom'
+import React, { useState } from 'react'
+import { getRoomsWithSongs } from '../../services/apiHelper'
+import { useHistory } from 'react-router-dom'
 
-// const Room = (props) => {
+const Room = (props) => {
 
-//   const [room, setRoom] = useState([])
+  console.log(props)
 
-//   // const fetchRoom = async () => {
-//   //   let room
-//   //   let room_id = props.match.params.id
-    
-//   //   const res = await getRoomById(room_id)
-//   //   room = res
-//   //   console.log(res)
-//   //   setRoom(room)
-//   // }
+  // const [room, setRoom] = useState([])
 
-//   // useHistory(() => {
-//   //   if (props.history) {
-//   //     fetchRoom()
-//   //   }
-//   // }, [])
+  // const fetchRoom = async () => {
+  //   let res = await getRoomsWithSongs()
+  //   setRoom(res)
+  // }
 
-//   console.log(room)
+  // console.log(room)
 
-//   return (
-//     <div className='room'>
-//       <div>Room page</div>
-//     </div>
-//   )
-// }
+  // useHistory(() => {
+  //   if (props.history) {
+  //     fetchRoom()
+  //   }
+  // }, [])
 
-// export default Room
+  // console.log(room)
+
+  return (
+    <div className='room'>
+      <div>Room page</div>
+    </div>
+  )
+}
+
+export default Room
