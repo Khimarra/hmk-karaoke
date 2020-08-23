@@ -27,7 +27,12 @@ const Home = (props) => {
           return (
             <Link key={index} to={{
               pathname: `/room/${room.code}`,
-              roomProps: {room}
+              rooms: {
+                title: room.title,
+                code: room.code,
+                id: room.id,
+                url: room.url
+              }
             }}>
               <div>{room.title}</div>
             </Link>

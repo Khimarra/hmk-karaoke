@@ -19,11 +19,11 @@ export const getRooms = async () => {
   }
 }
 
-export const getRoomsWithSongs = async (room_id) => {
+export const getRoomsWithSongs = async (room_code) => {
   console.log("first string")
   try {
-    const res = await axios.get(`${apiUrl}/rooms/${room_id}`)
-    console.log("string")
+    const res = await axios.get(`${apiUrl}/rooms/${room_code}`)
+    console.log("second string")
     return res.data
   } catch (error) {
     console.log(error)

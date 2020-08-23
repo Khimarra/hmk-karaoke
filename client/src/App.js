@@ -7,19 +7,25 @@ import Room from "./components/screens/Room"
 import NewRoom from "./components/screens/NewRoom"
 
 const App = (props) => {
-  const [room, setRoom] = useState([])
-
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" render={(props) => <Home />} />
-
-        <Route exact path="/newroom" render={(props) => <NewRoom />} />
+        <Route
+          exact
+          path="/"
+          render={(props) => <Home {...props} />}
+        />
 
         <Route
           exact
-          path="/room/:id"
-          render={(props) => <Room setRoom={setRoom} />}
+          path="/newroom"
+          render={(props) => <NewRoom {...props} />}
+        />
+
+        <Route
+          exact
+          path="/room/:code"
+          render={(props) => <Room {...props} />}
         />
       </Switch>
     </div>
