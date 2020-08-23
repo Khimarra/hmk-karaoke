@@ -1,8 +1,6 @@
-import React from 'react'
+import React from "react"
 
 const Song = (props) => {
-  console.log(props.song)
-
   let song = props.song
 
   return (

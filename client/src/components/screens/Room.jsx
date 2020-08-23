@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react"
 import { getRoomsWithSongs } from "../../services/apiHelper"
 import { useHistory } from "react-router-dom"
 
-import Song from '../shared/Song'
-import RoomInfo from '../shared/RoomInfo'
+import Song from "../shared/Song"
+import RoomInfo from "../shared/RoomInfo"
 
 const Room = (props) => {
   let room = props.location.rooms
   let id = room.id
-  console.log(id)
 
   const [songs, setSongs] = useState([])
 
@@ -16,8 +15,6 @@ const Room = (props) => {
     let res = await getRoomsWithSongs(id)
     setSongs(res)
   }
-
-  console.log(songs.songlists)
 
   let songInfo = songs.songlists
 
@@ -30,9 +27,8 @@ const Room = (props) => {
       <RoomInfo room={room} />
 
       <div>
-        {songInfo && songInfo.map((song, index) => (
-          <Song key={index} song={song} />
-        ))}
+        {songInfo &&
+          songInfo.map((song, index) => <Song key={index} song={song} />)}
       </div>
     </div>
   )
