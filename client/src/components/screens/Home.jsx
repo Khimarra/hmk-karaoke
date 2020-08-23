@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, Redirect } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 import { getRooms } from "../../services/apiHelper"
 
@@ -12,18 +12,22 @@ const Home = (props) => {
     setRooms(res)
   }
 
+  let history = useHistory()
+
   useEffect(() => {
     fetchRoomInfo()
   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setInput(e.target.value)
 
-    if (rooms.code === input) {
-      return <div>{/* link to room */}</div>
-    } else {
-      return <div>Invalid Room Code</div>
+    for (let i = 0; i < rooms.length; i++) {
+      if (rooms[i].code === input) {
+        console.log(e.target.value)
+        history.push(`/room/${rooms[i].id}/${rooms[i].code}`)
+      } else {
+        return <div>Invalid Room Code</div>
+      }
     }
   }
 
@@ -39,35 +43,12 @@ const Home = (props) => {
             name="code"
             type="text"
             placeholder="4 digit code"
-            value={input}
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => setInput(e.target.value)}
           />
         </label>
 
         <input type="submit" value="Join" />
       </form>
-
-      {/* {rooms.map((room, index) => {
-        if (Object.keys(rooms).length === 0) {
-          return <div>Loading...</div>
-        }
-        return (
-          <Link
-            key={index}
-            to={{
-              pathname: `/room/${room.code}`,
-              rooms: {
-                title: room.title,
-                code: room.code,
-                id: room.id,
-                url: room.url,
-              },
-            }}
-          >
-            <div>{room.title}</div>
-          </Link>
-        )
-      })} */}
     </div>
   )
 }

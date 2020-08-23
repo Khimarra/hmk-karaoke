@@ -24,7 +24,7 @@ const App = (props) => {
 
         <Route
           exact
-          path="/room/:code"
+          path="/room/:id/:code"
           render={(props) => <Room {...props} />}
         />
       </Switch>

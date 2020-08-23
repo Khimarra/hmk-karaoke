@@ -6,7 +6,10 @@ import Song from "../shared/Song"
 import RoomInfo from "../shared/RoomInfo"
 
 const Room = (props) => {
-  let room = props.location.rooms
+  console.log(props)
+  let room = props.match.params
+  console.log(room)
+  // let code = room.code
   let id = room.id
 
   const [songs, setSongs] = useState([])
@@ -17,6 +20,7 @@ const Room = (props) => {
   }
 
   let songInfo = songs.songlists
+  console.log(songInfo)
 
   useEffect(() => {
     fetchSongs(id)
