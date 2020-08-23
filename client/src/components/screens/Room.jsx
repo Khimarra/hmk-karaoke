@@ -3,6 +3,7 @@ import { getRoomsWithSongs } from "../../services/apiHelper"
 import { useHistory } from "react-router-dom"
 
 import Song from '../shared/Song'
+import RoomInfo from '../shared/RoomInfo'
 
 const Room = (props) => {
   let room = props.location.rooms
@@ -26,9 +27,7 @@ const Room = (props) => {
 
   return (
     <div className="room">
-      <div>{room.title}</div>
-      <div>{room.code}</div>
-      <div>{room.url}</div>
+      <RoomInfo room={room} />
 
       <div>
         {songInfo && songInfo.map((song, index) => (
