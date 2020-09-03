@@ -12,7 +12,7 @@ const api = axios.create({
 
 export const getRooms = async () => {
   try {
-    const res = await axios.get(`${apiUrl}/rooms`)
+    const res = await api.get(`${apiUrl}/rooms`)
     return res.data
   } catch (error) {
     console.log(error)
@@ -21,7 +21,7 @@ export const getRooms = async () => {
 
 export const getRoomsWithSongs = async (room_id) => {
   try {
-    const res = await axios.get(`${apiUrl}/rooms/${room_id}`)
+    const res = await api.get(`${apiUrl}/rooms/${room_id}`)
     return res.data
   } catch (error) {
     console.log(error)
@@ -29,22 +29,19 @@ export const getRoomsWithSongs = async (room_id) => {
 }
 
 export const getRoomById = async (room_id) => {
-  const res = await axios.get(`${apiUrl}/rooms/${room_id}`)
-  return res
+  const res = await api.get(`${apiUrl}/rooms/${room_id}`)
+  return res.data
 }
 
-export const createRoom = async (roomData) => {
+export const postRoom = async (roomData) => {
   const res = await api.post('/rooms/', roomData)
-  localStorage.setItem('roomToken', res.data.token)
-  api.defaults.headers.common.authorization = `Bearer ${res.data.token}`
-  return res.data.room
+  return res.data
 }
 
-export const editRoom = async (room_id, formData) => {
-  console.log(formData)
+export const putRoom = async (room_id, formData) => {
   try {
     const res = await api.put(`/rooms/${room_id}`, formData)
-    return res
+    return res.data
   } catch (e) {
     console.log(e.message)
   }
@@ -61,18 +58,18 @@ export const deleteRoom = async (room_id) => {
 // ========================================================
 
 export const getSongs = async () => {
-  const res = await axios.get(`${apiUrl}/songlists`)
+  const res = await api.get(`${apiUrl}/songlists`)
   return res
 }
 
 export const getSongById = async (song_id) => {
-  const res = await axios.get(`${apiUrl}/songlists/${song_id}`)
+  const res = await api.get(`${apiUrl}/songlists/${song_id}`)
   return res
 }
 
 export const createSong = async (songData) => {
   const token = localStorage.getItem('roomToken')
-  const res = await axios({
+  const res = await api.post({
     url: `${apiUrl}/songlists`,
     headers: {
       'Authorization': `Bearer ${token}`

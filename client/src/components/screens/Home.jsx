@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 
-import { getRooms } from "../../services/apiHelper"
+import { getRooms, postRoom } from "../../services/apiHelper"
 
 const Home = (props) => {
-  const [rooms, setRooms] = useState([])
+  const [allRooms, setAllRooms] = useState([])
   const [input, setInput] = useState([])
-
-  const fetchRoomInfo = async () => {
-    const res = await getRooms()
-    setRooms(res)
-  }
-
   let history = useHistory()
 
   useEffect(() => {
-    fetchRoomInfo()
+    fetchRooms()
   }, [])
+
+  const fetchRooms = async () => {
+    const rooms = await getRooms()
+    setAllRooms(rooms)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     for (let i = 0; i < rooms.length; i++) {
       if (rooms[i].code === input) {
         history.push(`/room/${rooms[i].id}/${rooms[i].code}`)
@@ -31,12 +29,19 @@ const Home = (props) => {
     }
   }
 
+  const createRoom = async (roomData) => {
+    const newRoom = await postRoom(roomData)
+    setAllRooms(prevState => ([
+      ...prevState,
+      newRoom
+    ]))
+    // history.push('/rooms')
+  }
+
   // attempting to make new room
   // home page has button to go to new room page
   // new room page has form to fill out
   // form on new room page has submit to create new room
-
-
 
   return (
     <div>

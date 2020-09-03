@@ -1096,3 +1096,116 @@ Processing by RoomsController#index as HTML
 Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.2ms | Allocations: 1167)
 
 
+Started GET "/rooms" for ::1 at 2020-09-03 12:14:23 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.6ms | Allocations: 1167)
+
+
+Started GET "/rooms" for ::1 at 2020-09-03 12:40:45 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.6ms | Allocations: 1170)
+
+
+Started GET "/rooms" for ::1 at 2020-09-03 12:43:24 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.8ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.8ms | Allocations: 1109)
+
+
+Started GET "/rooms" for ::1 at 2020-09-03 13:49:43 -0400
+Processing by RoomsController#index as HTML
+  [1m[36mRoom Load (0.6ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 1167)
+
+
+Started GET "/rooms" for ::1 at 2020-09-03 14:32:08 -0400
+Processing by RoomsController#index as */*
+  Parameters: {"title"=>"Doctor Thunder Room", "code"=>"1234", "url"=>"somezoomlink", "room"=>{"title"=>"Doctor Thunder Room", "code"=>"1234", "url"=>"somezoomlink"}}
+  [1m[36mRoom Load (0.7ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.7ms | Allocations: 1171)
+
+
+Started POST "/rooms" for ::1 at 2020-09-03 14:32:33 -0400
+Processing by RoomsController#create as */*
+  Parameters: {"title"=>"Another Room", "code"=>"heje", "url"=>"somezoomlink", "room"=>{"title"=>"Another Room", "code"=>"heje", "url"=>"somezoomlink"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/rooms_controller.rb:20:in `create'
+  [1m[36mRoom Create (0.8ms)[0m  [1m[32mINSERT INTO "rooms" ("title", "code", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Another Room"], ["code", "heje"], ["url", "somezoomlink"], ["created_at", "2020-09-03 18:32:33.021407"], ["updated_at", "2020-09-03 18:32:33.021407"]]
+  ↳ app/controllers/rooms_controller.rb:20:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/rooms_controller.rb:20:in `create'
+Completed 201 Created in 6ms (Views: 0.6ms | ActiveRecord: 1.8ms | Allocations: 2694)
+
+
+Started PUT "/rooms" for ::1 at 2020-09-03 14:32:56 -0400
+  
+ActionController::RoutingError (No route matches [PUT] "/rooms"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PUT "/rooms/3" for ::1 at 2020-09-03 14:33:08 -0400
+Processing by RoomsController#update as */*
+  Parameters: {"title"=>"Another Room", "code"=>"AAAA", "url"=>"somezoomlink", "id"=>"3", "room"=>{"title"=>"Another Room", "code"=>"AAAA", "url"=>"somezoomlink"}}
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:44:in `set_room'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/rooms_controller.rb:29:in `update'
+  [1m[36mRoom Update (2.3ms)[0m  [1m[33mUPDATE "rooms" SET "code" = $1, "updated_at" = $2 WHERE "rooms"."id" = $3[0m  [["code", "AAAA"], ["updated_at", "2020-09-03 18:33:08.792762"], ["id", 3]]
+  ↳ app/controllers/rooms_controller.rb:29:in `update'
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/rooms_controller.rb:29:in `update'
+Completed 200 OK in 18ms (Views: 0.7ms | ActiveRecord: 3.9ms | Allocations: 4919)
+
+
+Started DELETE "/rooms/3" for ::1 at 2020-09-03 14:33:20 -0400
+Processing by RoomsController#destroy as */*
+  Parameters: {"title"=>"Another Room", "code"=>"AAAA", "url"=>"somezoomlink", "id"=>"3", "room"=>{"title"=>"Another Room", "code"=>"AAAA", "url"=>"somezoomlink"}}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/rooms_controller.rb:44:in `set_room'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/rooms_controller.rb:38:in `destroy'
+  [1m[36mSonglist Load (0.5ms)[0m  [1m[34mSELECT "songlists".* FROM "songlists" WHERE "songlists"."room_id" = $1[0m  [["room_id", 3]]
+  ↳ app/controllers/rooms_controller.rb:38:in `destroy'
+  [1m[36mRoom Destroy (0.7ms)[0m  [1m[31mDELETE FROM "rooms" WHERE "rooms"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/rooms_controller.rb:38:in `destroy'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/rooms_controller.rb:38:in `destroy'
+Completed 204 No Content in 25ms (ActiveRecord: 2.5ms | Allocations: 5377)
+
+
+Started GET "/rooms" for ::1 at 2020-09-03 14:33:27 -0400
+Processing by RoomsController#index as */*
+  Parameters: {"title"=>"Another Room", "code"=>"AAAA", "url"=>"somezoomlink", "room"=>{"title"=>"Another Room", "code"=>"AAAA", "url"=>"somezoomlink"}}
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms"[0m
+  ↳ app/controllers/rooms_controller.rb:8:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 1111)
+
+
