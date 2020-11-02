@@ -118,3 +118,7 @@ User routes:
 ## Progress Notes
 
 - Need to work through the existing state of everything to see where I am.
+- Create wireframes
+- Create ERD
+- Create component heirarchy
+- Finish filling out this readme
